@@ -1,0 +1,72 @@
+from abc import ABC
+from dataclasses import dataclass
+from src.common.types import Vector
+
+
+@dataclass(frozen=True)
+class DataTransferObject(ABC):
+    """
+    Base interface for DTO.
+    Should be implemented as simple as possible.
+    FROZEN = TRUE.
+    """
+    ...
+
+
+@dataclass
+class GameObject(ABC):
+    """Base interface for game objects with coordinates"""
+    x: int = 0
+    y: int = 0
+    
+    @property
+    def coords(self) -> Vector:
+        """Returns object's coordinates as a Vector"""
+        ...
+
+    @property
+    def center_coords(self) -> Vector:
+        """Returns object's center coordinates as a Vector"""
+        ...
+
+    @property
+    def center_x(self) -> int:
+        """Returns object's center coordinate on X axis"""
+        ...
+
+    @property
+    def center_y(self) -> int:
+        """Returns object's center coordinate on Y axis"""
+        ...
+
+    @property
+    def left(self) -> int:
+        """Returns object's left border coordinate on X axis"""
+        ...
+
+    @property
+    def right(self) -> int:
+        """Returns object's right border coordinate on X axis"""
+        ...
+
+    @property
+    def top(self) -> int:
+        """Returns object's top border coordinate on Y axis"""
+        ...
+
+    @property
+    def bottom(self) -> int:
+        """Returns object's bottom border coordinate on Y axis"""
+        ...
+
+    def to_dto(self) -> DataTransferObject:
+        """Returns object, converted into it's DTO"""
+        ...
+
+    @classmethod
+    def from_dto(cls, object: DataTransferObject) -> 'GameObject':
+        """
+        Classmethod.
+        Returns object, converted from it's DTO.
+        """
+        ...
