@@ -10,7 +10,7 @@ class Paddle(GameObject):
     """
     Class for player's paddle.
     """
-    # TODO: incapsulate logic into this class
+    # TODO: incapsulate paddle logic into this class
     width: int = PaddleSettings.width
     height: int = PaddleSettings.height
     # Pygame axis coordinates (starting as top left)
@@ -19,50 +19,28 @@ class Paddle(GameObject):
     # Paddle's velocity values
     velocity_x: int = 0
     velocity_y: int = 0
-
-    @property
-    def coords(self) -> Vector:
-        """Returns coordinates as a vector, in pygame dimension"""
-        return (self.x, self.y)
     
     @property
     def center_x(self) -> int:
-        """Returns center coordinates on x axis"""
         return (self.x + self.width) // 2
     
     @property
     def center_y(self) -> int:
-        """Returns center coordinates on y axis"""
         return (self.y + self.height) // 2
     
     @property
     def center_coords(self) -> Vector:
-        """Returns center coordinates as a vector"""
         return (self.center_x, self.center_y)
     
     @property
     def top(self) -> int:
-        """Returns top y coordinate"""
         return self.y
     
     @property
     def bottom(self) -> int:
-        """Returns bottom y coordinate"""
         return self.y + self.height
-    
-    @property
-    def velocity(self) -> Vector:
-        """Returns velocity value as a vector"""
-        return (self.velocity_x, self.velocity_y)
-    
-    @velocity.setter
-    def velocity(self, val: Vector):
-        """Allows to set velocity as vector"""
-        self.velocity_x, self.velocity_y = val
 
     def move(self):
-        """Move object's coordinates, based on current velocity"""
-        self.x += self.velocity_x
         self.y += self.velocity_y
 
     def to_dto(self) -> PaddleDTO:
