@@ -1,4 +1,4 @@
-from src.common.abstracts import DataTransferObject, GameObject
+from src.common.abstracts import GameObject
 from src.common.dto import BallDTO
 from src.common.types import Vector
 from src.common.settings import BallSettings

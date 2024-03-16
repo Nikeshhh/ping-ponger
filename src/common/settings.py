@@ -1,9 +1,10 @@
+from abc import ABC
 from dataclasses import dataclass
+from src.common.abstracts import SettingsABC
 from src.common.types import Vector, RgbVector
 
 
-@dataclass
-class ScreenSettings:
+class ScreenSettings(SettingsABC):
     width: int = 800
     height: int = 800
 
@@ -11,8 +12,7 @@ class ScreenSettings:
         return (self.width, self.height)
     
 
-@dataclass
-class PaddleSettings:
+class PaddleSettings(SettingsABC):
     width: int = 30
     height: int = 200
     default_position_x: int = 0
@@ -22,10 +22,8 @@ class PaddleSettings:
     def default_position(self) -> Vector:
         return (self.default_position_x, self.default_position_y)
     
-    
 
-@dataclass
-class BallSettings:
+class BallSettings(SettingsABC):
     radius: int = 50
     color: RgbVector = (0, 255, 255)
     default_position_x: int = 400
@@ -43,8 +41,7 @@ class BallSettings:
         return (self.default_position_x, self.default_position_y)
 
 
-@dataclass
-class GameSettings:
+class GameSettings(SettingsABC):
     screen_settings: ScreenSettings = ScreenSettings()
     ball_settings: BallSettings = BallSettings()
     paddle_settings: PaddleSettings = PaddleSettings()

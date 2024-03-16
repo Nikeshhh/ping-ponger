@@ -8,6 +8,7 @@ class Game:
     player_1: Player
     player_2: Player
     ball: Ball
+
     
     def __init__(self) -> None:
         self.settings = GameSettings()

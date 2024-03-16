@@ -174,11 +174,3 @@ poetry.toml
 pyrightconfig.json
 
 # End of https://www.toptal.com/developers/gitignore/api/python
-
-
-# Django local configuration file
-core/project/settings/local.py
-
-# Django static folder
-static/*
-!static/.gitkeep

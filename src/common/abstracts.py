@@ -4,6 +4,10 @@ from src.common.types import Vector
 
 
 @dataclass(frozen=True)
+class SettingsABC(ABC):
+    ...
+
+@dataclass(frozen=True)
 class DataTransferObject(ABC):
     """
     Base interface for DTO.
